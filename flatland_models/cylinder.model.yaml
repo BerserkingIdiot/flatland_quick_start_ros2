@@ -1,0 +1,11 @@
+bodies:
+  - name: base
+    enabled: true
+    pose: [0, 0, 0]
+    type: dynamic
+    color: [1, 0, 0, 0.75]
+    footprints:
+      - type: circle
+        radius: 0.1
+        center: [0.0, 0.0]
+        density: 1

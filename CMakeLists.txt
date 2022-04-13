@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0.2)
+cmake_minimum_required(VERSION 3.5)
 project(flatland_quick_start_ros2)
 
 if(NOT CMAKE_C_STANDARD)
@@ -13,15 +13,12 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 endif()
 
 find_package(ament_cmake REQUIRED)
-find_package((ament_cmake_python REQUIRED)
+find_package(ament_cmake_python REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rclpy REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
-
-
-catkin_python_setup()
 
 # ament_export_dependencies(geometry_msgs sensor_msgs roscpp message_runtime)
 include_directories(
@@ -36,6 +33,7 @@ install(DIRECTORY launch
     DESTINATION share/${PROJECT_NAME}/
 )
 
+# Install assets
 install(DIRECTORY flatland_worlds
     DESTINATION share/${PROJECT_NAME}/
 )
@@ -43,6 +41,11 @@ install(DIRECTORY flatland_worlds
 install(DIRECTORY flatland_models
     DESTINATION share/${PROJECT_NAME}/
 )
+
+install(DIRECTORY rviz
+    DESTINATION share/${PROJECT_NAME}/
+)
+
 #Install C++ executables
 install(
   TARGETS custom_robot_controller

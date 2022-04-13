@@ -1,0 +1,8 @@
+properties: {}
+layers:
+  - name: "map"
+    map: "conestogo_office.yaml"
+    color: [0.4, 0.4, 0.4, 1]
+models:
+  - name: serp
+    model: "../flatland_models/serp_lidar.model.yaml"

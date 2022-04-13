@@ -1,0 +1,40 @@
+properties: {}
+layers:
+  - name: ["static", "no_laser"]
+    map: "map.yaml"
+    color: [0.4, 0.4, 0.4, 1]
+models:
+  - name: serp
+    model: "../../flatland_models/serp_lidar.model.yaml"
+
+  - name: box_1
+    model: "../../flatland_models/box.model.yaml"
+    pose: [1, 1, 0]
+
+  - name: box_2
+    model: "../../flatland_models/box_large.model.yaml"
+    pose: [-1, -1.5, 0.785398163397448275] #rotated 45 degrees
+
+  - name: cylinder_1
+    model: "../../flatland_models/cylinder.model.yaml"
+    pose: [-1.5, 1, 0]
+
+  - name: cylinder_2
+    model: "../../flatland_models/cylinder_large.model.yaml"
+    pose: [1.5, -1.5, 0]
+
+  - name: cylinder_noise_1
+    model: "../../flatland_models/cylinder_small.model.yaml"
+    pose: [2.5, -0.5, 0]
+
+  - name: cylinder_noise_2
+    model: "../../flatland_models/cylinder_small.model.yaml"
+    pose: [2.5, 1.5, 0]
+
+  - name: cylinder_noise_3
+    model: "../../flatland_models/cylinder_small.model.yaml"
+    pose: [5, -0.5, 0]
+
+  - name: cylinder_noise_4
+    model: "../../flatland_models/cylinder_small.model.yaml"
+    pose: [5, 1.5, 0]

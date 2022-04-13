@@ -1,0 +1,66 @@
+#SERP model
+
+bodies:
+
+  - name: base_link
+    enabled: true
+    pose: [0, 0, 0]
+    type: dynamic
+    color: [1, 1, 1, 0.75]
+    footprints:
+      - type: polygon
+        density: 1
+        points: [ [-0.117, -0.055],
+                  [0.048, -0.055],
+                  [0.048, 0.055],
+                  [-0.117, 0.055] ]
+
+  - name: left_wheel
+    color: [1, 1, 0, 0.75] 
+    footprints:
+      - type: polygon
+        density: 1.0
+        points: [ [ -0.035, -0.0125],
+                  [ 0.035,  -0.0125],
+                  [ 0.035, 0.0125],
+                  [ -0.035, 0.0125] ]
+  - name: right_wheel
+    color: [1, 1, 0, 0.75] 
+    footprints:
+      - type: polygon
+        density: 1.0
+        points: [ [ -0.035, -0.0125],
+                  [ 0.035,  -0.0125],
+                  [ 0.035, 0.0125],
+                  [ -0.035, 0.0125] ]
+
+joints: 
+  - type: weld
+    name: left_wheel_weld
+    bodies: 
+      - name: left_wheel
+        anchor: [0, 0]
+      - name: base_link
+        anchor: [0, -0.0725]
+
+  - type: weld
+    name: right_wheel_weld  
+    bodies: 
+      - name: right_wheel
+        anchor: [0, 0]
+      - name: base_link
+        anchor: [0, 0.0725]
+
+plugins:
+  - type: DiffDrive
+    name: serp_diff_drive
+    body: base_link
+    odom_frame_id: serp_odom
+    pub_rate: 10
+    twist_sub: cmd_vel
+    enable_odom_pub: false
+    enable_twist_pub: false
+  
+  - type: ModelTfPublisher
+    name: tf_publisher
+    publish_tf_world: true

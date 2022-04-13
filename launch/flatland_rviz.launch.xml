@@ -1,0 +1,37 @@
+<launch>
+
+    <arg name="world_path" default="office_test"/>
+
+    <include file="$(find-pkg-share flatland_server)/launch/server.launch.xml">
+        <arg name="world_path" value="$(find-pkg-share flatland_quick_start_ros2)/flatland_worlds/$(var world_path)/world.yaml"/>
+        <arg name="use_rviz" value="true"/>
+    </include>
+
+    <include file="$(find-pkg-share flatland_quick_start_ros2)/launch/rviz.launch.xml">
+        <arg name="rviz_config" value="$(find-pkg-share flatland_quick_start_ros2)/flatland_worlds/office_test/robot_navigation.rviz"/>
+    </include>
+
+    <!-- Load map -->
+    <node pkg="nav2_map_server" exec="map_server" name="map_server" output="screen" args="$(find-pkg-share flatland_quick_start_ros2)/flatland_worlds/$(var world_path)/map.yaml">
+		<!-- <remap from="/map" to="/$(var ns)/map"/> -->
+        <!--
+		<remap from="/tf" to="/$(var ns)/tf"/>
+		<remap from="/clock" to="/$(var ns)/clock"/>
+        -->
+    </node>
+
+    <!-- odom frame == map frame-->
+	<node pkg="tf2_ros" exec="static_transform_publisher" name="link1_broadcaster" args="0 0 0 0 0 0 map odom">
+		<!--
+        <remap from="/tf" to="/$(var ns)/tf"/>
+		<remap from="/clock" to="/$(var ns)/clock"/>
+        -->
+	</node>
+
+    <!-- robot steering disabled as this package is unavailable in ROS2 as of the writing of this tutorial
+    <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
+        <param name="default_topic" value="/cmd_vel"/>
+    </node>
+    -->
+
+</launch>

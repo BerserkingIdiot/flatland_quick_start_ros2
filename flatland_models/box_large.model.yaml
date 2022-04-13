@@ -1,0 +1,13 @@
+bodies:
+  - name: base
+    enabled: true
+    pose: [0, 0, 0]
+    type: dynamic
+    color: [1, 0, 0, 0.75]
+    footprints:
+      - type: polygon
+        density: 1
+        points: [ [-0.2, -0.2],
+                  [0.2, -0.2],
+                  [0.2, 0.2],
+                  [-0.2, 0.2] ]

@@ -1,0 +1,14 @@
+<launch>
+    <include file="$(find-pkg-share flatland_server)/launch/server.launch.xml">
+        <!--
+        <arg name="world_path" value="$(find ros1_flatland_quick_start)/flatland_worlds/conestogo_office_test_world.yaml"/>
+        -->
+    </include>
+
+    <!--
+    <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
+        <param name="default_topic" value="/cmd_vel"/>
+    </node>
+    -->
+
+</launch>

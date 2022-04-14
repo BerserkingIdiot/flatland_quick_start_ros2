@@ -1,4 +1,4 @@
-# ROS1 Robot Control Crash Course, with Flatland
+# ROS2 Robot Control Crash Course, with Flatland
 
 ## Installation and Environment Setup
 
@@ -6,93 +6,97 @@ Note: This guide assumes you are using an Ubuntu 20.04 operating system, and can
 
 ### ROS Installation
 
-Follow the instructions in the official [ROS installation guide](http://wiki.ros.org/noetic/Installation/Ubuntu). It is recommended to at least install the desktop version, as some tools that will be used here are already contained within.
+Follow the instructions in the official [ROS installation guide](https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Binary.html). By following the guide, you will have ROS2 installed on your home directory, under the name _ros2\_linux_. However, in this tutorial it is assumed that your ROS installation is placed in _/opt/ros/_, under the name _foxy_(which is the most recent Long Term Support distribution at the time of writing). If you wish to move your installation to this location, you can do the following:
+```
+sudo mv ~/ros2_foxy/ros2-linux/ /opt/ros/
+sudo mv /opt/ros/ros2-linux/ /opt/ros/foxy/
+```
 
-Note: From this point on, it is assumed that every terminal has sourced the _setup.bash_ script as indicated in section 1.5 of the installation guide. Without this, you will not be able to use ROS or any of its tools.
+Note: From this point on, it is assumed that every terminal has sourced the _setup.bash_ script as indicated in the Environment Setup section of the installation guide. Without this, you will not be able to use ROS or any of its tools. If you moved the installation to _/opt/ros/foxy/_, the command to source it becomes:
+```
+source /opt/ros/foxy/setup.bash
+```
 
 ### Workspace Setup
 
-Create your own workspace. Pick where you would like your workspace to be placed (usually in the home directory, a.k.a. _~/_) and create a folder with a name of your choice, for example _ros\_workspace_, and within it create a folder named _src_. Finally, from within the workspace folder, in this case the ros_workspace folder, run the _catkin\_make_ command. You can use the following commands in a terminal for this process, assuming you place your workspace in your home directory:
+Create your own workspace. Pick where you would like your workspace to be placed (usually in the home directory, a.k.a. _~/_) and create a folder with a name of your choice, for example _ros\_workspace_, and within it create a folder named _src_. Finally, from within the workspace folder, in this case the ros_workspace folder, run the _colcon build_ command. You can use the following commands in a terminal for this process, assuming you place your workspace in your home directory:
 
 ```
 mkdir -p ~/ros_workspace/src
 cd ~/ros_workspace/
-catkin_make
+colcon build
 ```
 
-Two new folders should have appeared in your workspace, _build/_ and _devel/_. Within the _devel/_ folder, you'll find multiple shell scripts. One of these, _devel/setup.bash_ will be used to allow you to run code from packages within your workspace. Every time you open a new terminal to run ROS code from within your workspace and after you run _catkin\_make_, don't forget to execute the following command:
+Three new folders should have appeared in your workspace, _build/_, _install/_ and _log/_. Within the _install/_ folder, you'll find multiple shell scripts. One of these, _install/setup.bash_ will be used to allow you to run code from packages within your workspace. Every time you open a new terminal to run ROS code from within your workspace and after you run _colcon build_, don't forget to execute the following command:
 
 ```
-source devel/setup.bash
+source install/setup.bash
 ```
 
 ### Flatland Setup
 
-First, clone the flatland repository into the _src_ folder of your workspace. Then, from within your workspace, build the package with _catkin\_make_ (and source devel/setup.bash), and launch the default server to test whether everything is working. You can do this process with the following commands:
+First, clone the flatland repository into the _src_ folder of your workspace and check out the ros2-plugins-port-broken branch. Then, from within your workspace, build the package with _colcon build_ (and source install/setup.bash), and launch the default server to test whether everything is working. You can do this process with the following commands:
 
 ```
 cd src/
 git clone https://github.com/avidbots/flatland.git
-cd ..
-catkin_make
-source devel/setup.bash
-roslaunch flatland_server server.launch
+cd flatland
+git checkout origin/ros2-plugins-port-broken
+cd ../..
+colcon build
+source install/setup.bash
+ros2 launch flatland_server server.launch
 ```
 
-If all went well, you should see a map of an office and a few models placed around, one of them moving back and forth on a cycle.
+If all went well, you should see some feedback on the console. If you have already experimented with the ROS1 version, you'll notice that the visualization window is missing. As the ROS2 port of flatland isn't finished yet, this feature isn't available.
 
 ## First Run
 
 Now that you have ROS and Flatland set up, you can start experimenting with the code from this tutorial. First clone the repository and build it:
 ```
 cd src/
-git clone https://github.com/BerserkingIdiot/ROS1_flatland_quick_start.git
+git clone https://github.com/BerserkingIdiot/flatland_quick_start_ros2.git
 cd ..
-catkin_make
-source devel/setup.bash
+colcon build
+source install/setup.bash
 ```
-You can launch the example Flatland's native visualization, or RViz, both allowing you to visualize the simulation environment and the models.
-Flatland's native visualization adapts to simulation environments automatically, and provides some tools to move, spawn and delete models, and pausing the simulation. To launch this version you can use:
+You can launch the example with RViz visualization. RViz is complex and requires manual setup for each new environment, but also flexible, in this case providing a visualization of the data generated by the LiDAR. To launch this you can use:
 ```
-roslaunch ros1_flatland_quick_start flatland_fviz.launch
+ros2 launch flatland_quick_start_ros2 flatland_rviz.launch
 ```
-RViz is more complex and requires manual setup for each new environment, but is also more flexible, in this case providing a visualization of the data generated by the LiDAR. To launch this version you can use:
-```
-roslaunch ros1_flatland_quick_start flatland_rviz.launch
-```
-Both of these will launch a Flatland simulation, containing a small differential drive robot equipped with a LiDAR, and a few obstacles. Along with it, _rqt\_robot\_steering_, a tool that allows you to control the robot's linear and angular velocity, is also launched. Both visualization tools can be manipulated with the mouse, allowing you to drag, rotate and zoom in.
+This will launch a Flatland simulation, containing a small differential drive robot equipped with a LiDAR, and a few obstacles. The RViz visualization can be manipulated with the mouse, allowing you to drag, rotate, zoom and enable and disable certain components of the visualization.
 
 ## Write your own code
 
-The simulation in this package provides a small differential drive robot equipped with a LiDAR. The differential drive is controlled through Twist messages, and the LiDAR provides data in the form of LaserScan messages. In the _src/_ folder of this package, you will find some sample code that you can use to help develop your own robot controller.
+The simulation in this package provides a small differential drive robot equipped with a LiDAR. The differential drive is controlled through Twist messages, and the LiDAR provides data in the form of LaserScan messages. In this package, you will find some sample code that you can use to help develop your own robot controller.
 
 Note: the LiDAR scan data is provided in the form of an array of ranges, each value corresponding to the nearest detected obstacle by that ray, or _nan_ if nothing is found. The rays are defined counter-clockwise, starting from the rear of the robot, meaning that in the first half of the array are the values for obstacles on the right and in the second half are values for obstacles on the right, with the middle of the array corresponding to the front of the robot. Playing around with the RViz visualization may help understanding how these work.
 
 ### C++
 
-Within the _src/_ folder of this package (not to be confused with the workspace's _src/_), you can find a file named _custom_robot_controller.cpp. You can use this code to write your own code, and experiment with robot control. Don't forget to build the package after you modify the code, and to run it you must first make sure to have a simulation running. You can use one of the launch files from the previous section, for example, and then use the following command:
+Within the _src/_ folder of this package (not to be confused with the workspace's _src/_), you can find a file named _custom\_robot\_controller.cpp_. You can use this code to write your own code, and experiment with robot control. Don't forget to build the package after you modify the code, and to run it you must first make sure to have a simulation running. You can use one of the launch files from the previous section, for example, and then use the following command:
 ```
-rosrun ros1_flatland_quick_start custom_robot_controller
+ros2 run flatland_quick_start_ros2 custom_robot_controller
 ```
-
+ 
 ### Python
 
-Within the _src/_ folder of this package (not to be confused with the workspace's _src/_), you can find a file named _custom_robot_controller.py. You can use this code to write your own code, and experiment with robot control. Unlike the C++ version, you don't have to build the package every time you modify the code, and to run it you must first make sure to have a simulation running. You can use one of the launch files from the previous section, for example, and then use the following command:
+Within the _scripts/_ folder of this package, you can find a file named _custom\_robot\_controller.py_. You can use this code to write your own code, and experiment with robot control. Unlike the C++ version, you don't have to build the package every time you modify the code, and to run it you must first make sure to have a simulation running. You can use one of the launch files from the previous section, for example, and then use the following command:
 ```
-rosrun ros1_flatland_quick_start custom_robot_controller.py
+ros2 run flatland_quick_start_ros2 custom_robot_controller.py
 ```
 
 ## Next Steps
 
 ### Topics, Publishers and Subscribers
 
-In this tutorial, you were provided with a ROS node with the communication features already set up, and you might have noticed elements like the LiDAR scan subscriber and the Twist message publisher. These are essential elements of the ROS environment, and you can learn more about them in the [official ROS tutorials](http://wiki.ros.org/ROS/Tutorials).
+In this tutorial, you were provided with a ROS node with the communication features already set up, and you might have noticed elements like the LiDAR scan subscriber and the Twist message publisher. These are essential elements of the ROS environment, and you can learn more about them in the [official ROS tutorials](https://docs.ros.org/en/foxy/Tutorials.html).
 
 ### Exploring Flatland
 
 In this package, there are currently 2 different maps to experiment with, found in the _flatland\_worlds/_ folder. The launch files default to the office test world, but you can use the world_path parameter to choose the world you wish to boot up, for example to boot up the maze world you can run this:
 ```
-roslaunch ros1_flatland_quick_start flatland_rviz.launch world_path:="maze" 
+ros2 launch flatland_quick_start_ros2 flatland_rviz.launch world_path:="maze" 
 ```
 
 To learn more about the Flatland simulator, read the [documentation and tutorials](https://flatland-simulator.readthedocs.io/en/latest/)

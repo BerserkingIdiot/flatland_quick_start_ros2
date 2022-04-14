@@ -64,7 +64,12 @@ You can launch the example with RViz visualization. RViz is complex and requires
 ```
 ros2 launch flatland_quick_start_ros2 flatland_rviz.launch
 ```
-This will launch a Flatland simulation, containing a small differential drive robot equipped with a LiDAR, and a few obstacles. The RViz visualization can be manipulated with the mouse, allowing you to drag, rotate, zoom and enable and disable certain components of the visualization.
+Once the simulation is running, in a separate terminal, run:
+```
+ros2 run nav2_util lifecycle_bringup map_server
+```
+
+This will launch a Flatland simulation, containing a small differential drive robot equipped with a LiDAR, and a few obstacles. The RViz visualization can be manipulated with the mouse, allowing you to drag, rotate, zoom and enable and disable certain components of the visualization. The second command allows the map to be visible in RViz by activating the _map\_server_ node (lifecycles are a new feature in ROS2 that allows for more deterministic code development but we won't delve into it in this tutorial).
 
 ## Write your own code
 

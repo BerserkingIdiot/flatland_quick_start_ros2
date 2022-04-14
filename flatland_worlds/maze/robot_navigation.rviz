@@ -1,5 +1,5 @@
 Panels:
-  - Class: rviz/Displays
+  - Class: rviz_common/Displays
     Help Height: 0
     Name: Displays
     Property Tree Widget:
@@ -17,20 +17,20 @@ Panels:
         - /static obstacles1/stat_obj_11
       Splitter Ratio: 0.690048933
     Tree Height: 644
-  - Class: rviz/Selection
+  - Class: rviz_common/Selection
     Name: Selection
-  - Class: rviz/Tool Properties
+  - Class: rviz_common/Tool Properties
     Expanded:
       - /2D Pose Estimate1
       - /2D Nav Goal1
     Name: Tool Properties
     Splitter Ratio: 0.588679016
-  - Class: rviz/Views
+  - Class: rviz_common/Views
     Expanded:
       - /Current View1
     Name: Views
     Splitter Ratio: 0.5
-  - Class: rviz/Time
+  - Class: rviz_common/Time
     Experimental: false
     Name: Time
     SyncMode: 0
@@ -46,7 +46,7 @@ Visualization Manager:
   Displays:
     - Alpha: 0.5
       Cell Size: 1
-      Class: rviz/Grid
+      Class: rviz_default_plugins/Grid
       Color: 160; 160; 164
       Enabled: false
       Line Style:
@@ -62,7 +62,7 @@ Visualization Manager:
       Plane Cell Count: 10
       Reference Frame: <Fixed Frame>
       Value: false
-    - Class: rviz/TF
+    - Class: rviz_default_plugins/TF
       Enabled: true
       Frame Timeout: 15
       Frames:
@@ -92,18 +92,18 @@ Visualization Manager:
                 {}
       Update Interval: 0
       Value: true
-    - Class: rviz/Group
+    - Class: rviz_common/Group
       Displays:
-        - Class: rviz/MarkerArray
+        - Class: rviz_default_plugins/MarkerArray
           Enabled: false
-          Marker Topic: /flatland_server/debug/layer/2d
+          Topic: /flatland_server/debug/layer/2d
           Name: World
           Namespaces:
             {}
           Queue Size: 100
           Value: false
         - Alpha: 0.899999976
-          Class: rviz/Map
+          Class: rviz_default_plugins/Map
           Color Scheme: map
           Draw Behind: true
           Enabled: true
@@ -114,7 +114,7 @@ Visualization Manager:
           Value: true
       Enabled: true
       Name: world
-    - Class: rviz/Group
+    - Class: rviz_common/Group
       Displays:
         - Alpha: 1
           Autocompute Intensity Bounds: true
@@ -124,7 +124,7 @@ Visualization Manager:
             Value: true
           Axis: Z
           Channel Name: intensity
-          Class: rviz/LaserScan
+          Class: rviz_default_plugins/LaserScan
           Color: 85; 85; 255
           Color Transformer: FlatColor
           Decay Time: 0
@@ -154,7 +154,7 @@ Visualization Manager:
             Value: true
           Axis: Z
           Channel Name: intensity
-          Class: rviz/LaserScan
+          Class: rviz_default_plugins/LaserScan
           Color: 255; 170; 255
           Color Transformer: FlatColor
           Decay Time: 0
@@ -180,7 +180,7 @@ Visualization Manager:
       Name: LaserScanner
     - Alpha: 1
       Buffer Length: 1
-      Class: rviz/Path
+      Class: rviz_default_plugins/Path
       Color: 0; 0; 255
       Enabled: true
       Head Diameter: 0.300000012
@@ -201,18 +201,18 @@ Visualization Manager:
       Topic: /move_base/NavfnROS/plan
       Unreliable: false
       Value: true
-    - Class: rviz/MarkerArray
+    - Class: rviz_default_plugins/MarkerArray
       Enabled: true
-      Marker Topic: /flatland_server/debug/model/serp
+      Topic: /models/m_serp
       Name: serp
       Namespaces:
         "": true
       Queue Size: 100
       Value: true
-    - Class: rviz/Group
+    - Class: rviz_common/Group
       Displays:
         - Alpha: 1
-          Class: rviz/PointStamped
+          Class: rviz_default_plugins/PointStamped
           Color: 85; 85; 255
           Enabled: true
           History Length: 1
@@ -222,7 +222,7 @@ Visualization Manager:
           Unreliable: false
           Value: true
         - Alpha: 1
-          Class: rviz/PointStamped
+          Class: rviz_default_plugins/PointStamped
           Color: 85; 85; 255
           Enabled: true
           History Length: 1
@@ -232,7 +232,7 @@ Visualization Manager:
           Unreliable: false
           Value: true
         - Alpha: 1
-          Class: rviz/PointStamped
+          Class: rviz_default_plugins/PointStamped
           Color: 85; 85; 255
           Enabled: true
           History Length: 1
@@ -242,7 +242,7 @@ Visualization Manager:
           Unreliable: false
           Value: true
         - Alpha: 1
-          Class: rviz/PointStamped
+          Class: rviz_default_plugins/PointStamped
           Color: 85; 85; 255
           Enabled: true
           History Length: 1
@@ -253,78 +253,78 @@ Visualization Manager:
           Value: true
       Enabled: true
       Name: waypoints
-    - Class: rviz/Group
+    - Class: rviz_common/Group
       Displays:
-        - Class: rviz/MarkerArray
+        - Class: rviz_default_plugins/MarkerArray
           Enabled: true
-          Marker Topic: flatland_server/debug/model/box_1
+          Topic: /models/m_box_1
           Name: box_1
           Namespaces:
             {}
           Queue Size: 1
           Value: true
-        - Class: rviz/MarkerArray
+        - Class: rviz_default_plugins/MarkerArray
           Enabled: true
-          Marker Topic: /flatland_server/debug/model/box_2
+          Topic: /models/m_box_2
           Name: box_2
           Namespaces:
             {}
           Queue Size: 1
           Value: true
-        - Class: rviz/MarkerArray
+        - Class: rviz_default_plugins/MarkerArray
           Enabled: true
-          Marker Topic: /flatland_server/debug/model/cylinder_1
+          Topic: /models/m_cylinder_1
           Name: cylinder_1
           Namespaces:
             {}
           Queue Size: 1
           Value: true
-        - Class: rviz/MarkerArray
+        - Class: rviz_default_plugins/MarkerArray
           Enabled: true
-          Marker Topic: /flatland_server/debug/model/cylinder_2
+          Topic: /models/m_cylinder_2
           Name: cylinder_2
           Namespaces:
             {}
           Queue Size: 1
           Value: true
-        - Class: rviz/MarkerArray
+        - Class: rviz_default_plugins/MarkerArray
           Enabled: true
-          Marker Topic: /flatland_server/debug/model/cylinder_noise_1
+          Topic: /models/m_cylinder_noise_1
           Name: cylinder_noise_1
           Namespaces:
             {}
           Queue Size: 1
           Value: true
-        - Class: rviz/MarkerArray
+        - Class: rviz_default_plugins/MarkerArray
           Enabled: true
-          Marker Topic: /flatland_server/debug/model/cylinder_noise_2
+          Topic: /models/m_cylinder_noise_2
           Name: cylinder_noise_2
           Namespaces:
             {}
           Queue Size: 1
           Value: true
-        - Class: rviz/MarkerArray
+        - Class: rviz_default_plugins/MarkerArray
           Enabled: true
-          Marker Topic: /flatland_server/debug/model/cylinder_noise_3
+          Topic: /models/m_cylinder_noise_3
           Name: cylinder_noise_3
           Namespaces:
             {}
           Queue Size: 1
           Value: true
-        - Class: rviz/MarkerArray
+        - Class: rviz_default_plugins/MarkerArray
           Enabled: true
-          Marker Topic: /flatland_server/debug/model/cylinder_noise_4
+          Topic: /models/m_cylinder_noise_4
           Name: cylinder_noise_4
           Namespaces:
             {}
           Queue Size: 1
           Value: true
-      Enabled: false
+      Enabled: true
       Name: Static Obstacles
-    - Class: rviz/Group
+    - Class: rviz_common/Group
       Displays:
         - Alpha: 0.699999988
-          Class: rviz/Map
+          Class: rviz_default_plugins/Map
           Color Scheme: map
           Draw Behind: false
           Enabled: true
@@ -343,20 +343,20 @@ Visualization Manager:
     Frame Rate: 30
   Name: root
   Tools:
-    - Class: rviz/MoveCamera
-    - Class: rviz/Interact
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Interact
       Hide Inactive Objects: true
-    - Class: rviz/Select
-    - Class: rviz/SetInitialPose
+    - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/SetInitialPose
       Topic: /initialpose
-    - Class: rviz/SetGoal
+    - Class: rviz_default_plugins/SetGoal
       Topic: /move_base_simple/goal
-    - Class: rviz/Measure
+    - Class: rviz_default_plugins/Measure
   Value: true
   Views:
     Current:
       Angle: 0.0750005692
-      Class: rviz/TopDownOrtho
+      Class: rviz_default_plugins/TopDownOrtho
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1

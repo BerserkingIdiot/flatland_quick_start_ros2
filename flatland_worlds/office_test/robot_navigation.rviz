@@ -96,7 +96,7 @@ Visualization Manager:
       Displays:
         - Class: rviz_default_plugins/MarkerArray
           Enabled: false
-          Marker Topic: /flatland_server/debug/layer/2d
+          Topic: /flatland_server/debug/layer/2d
           Name: World
           Namespaces:
             {}
@@ -203,7 +203,7 @@ Visualization Manager:
       Value: true
     - Class: rviz_default_plugins/MarkerArray
       Enabled: true
-      Marker Topic: /flatland_server/debug/model/serp
+      Topic: /models/m_serp
       Name: serp
       Namespaces:
         "": true
@@ -257,7 +257,7 @@ Visualization Manager:
       Displays:
         - Class: rviz_default_plugins/MarkerArray
           Enabled: true
-          Marker Topic: flatland_server/debug/model/box_1
+          Topic: /models/m_box_1
           Name: box_1
           Namespaces:
             {}
@@ -265,7 +265,7 @@ Visualization Manager:
           Value: true
         - Class: rviz_default_plugins/MarkerArray
           Enabled: true
-          Marker Topic: /flatland_server/debug/model/box_2
+          Topic: /models/m_box_2
           Name: box_2
           Namespaces:
             {}
@@ -273,7 +273,7 @@ Visualization Manager:
           Value: true
         - Class: rviz_default_plugins/MarkerArray
           Enabled: true
-          Marker Topic: /flatland_server/debug/model/cylinder_1
+          Topic: /models/m_cylinder_1
           Name: cylinder_1
           Namespaces:
             {}
@@ -281,7 +281,7 @@ Visualization Manager:
           Value: true
         - Class: rviz_default_plugins/MarkerArray
           Enabled: true
-          Marker Topic: /flatland_server/debug/model/cylinder_2
+          Topic: /models/m_cylinder_2
           Name: cylinder_2
           Namespaces:
             {}
@@ -289,7 +289,7 @@ Visualization Manager:
           Value: true
         - Class: rviz_default_plugins/MarkerArray
           Enabled: true
-          Marker Topic: /flatland_server/debug/model/cylinder_noise_1
+          Topic: /models/m_cylinder_noise_1
           Name: cylinder_noise_1
           Namespaces:
             {}
@@ -297,7 +297,7 @@ Visualization Manager:
           Value: true
         - Class: rviz_default_plugins/MarkerArray
           Enabled: true
-          Marker Topic: /flatland_server/debug/model/cylinder_noise_2
+          Topic: /models/m_cylinder_noise_2
           Name: cylinder_noise_2
           Namespaces:
             {}
@@ -305,7 +305,7 @@ Visualization Manager:
           Value: true
         - Class: rviz_default_plugins/MarkerArray
           Enabled: true
-          Marker Topic: /flatland_server/debug/model/cylinder_noise_3
+          Topic: /models/m_cylinder_noise_3
           Name: cylinder_noise_3
           Namespaces:
             {}
@@ -313,7 +313,7 @@ Visualization Manager:
           Value: true
         - Class: rviz_default_plugins/MarkerArray
           Enabled: true
-          Marker Topic: /flatland_server/debug/model/cylinder_noise_4
+          Topic: /models/m_cylinder_noise_4
           Name: cylinder_noise_4
           Namespaces:
             {}

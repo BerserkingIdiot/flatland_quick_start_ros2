@@ -12,7 +12,8 @@
     </include>
 
     <!-- Load map -->
-    <node pkg="nav2_map_server" exec="map_server" name="map_server" output="screen" args="$(find-pkg-share flatland_quick_start_ros2)/flatland_worlds/$(var world_path)/map.yaml">
+    <node pkg="nav2_map_server" exec="map_server" name="map_server" output="screen">
+        <param name="yaml_filename" value="$(find-pkg-share flatland_quick_start_ros2)/flatland_worlds/office_test/map.yaml"/>
 		<!-- <remap from="/map" to="/$(var ns)/map"/> -->
         <!--
 		<remap from="/tf" to="/$(var ns)/tf"/>

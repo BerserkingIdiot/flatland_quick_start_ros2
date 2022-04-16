@@ -37,7 +37,7 @@ void CustomRobotController::processLaserScan(const sensor_msgs::msg::LaserScan::
     /**
         Write your code here
 
-        The values from the LiDAR are in lidar_scan_msg.ranges
+        The values from the LiDAR are in lidar_scan_msg->ranges (a vector)
         For more information on the data contained in a LaserScan message, consult http://docs.ros.org/en/api/sensor_msgs/html/msg/LaserScan.html
 
         The following are used to set the linear and angular velocities of the robot

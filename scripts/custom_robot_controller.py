@@ -2,6 +2,7 @@
 
 import rclpy
 from rclpy.node import Node
+from rclpy.qos import ReliabilityPolicy, QoSProfile
 from sensor_msgs.msg import LaserScan
 from geometry_msgs.msg import Twist
 
@@ -20,8 +21,8 @@ class CustomRobotControllerNode(Node):
         # For more information on the data contained in a LaserScan message, consult http://docs.ros.org/en/api/sensor_msgs/html/msg/LaserScan.html
         #
         # The following are used to set the linear and angular velocities of the robot
-        # twist_msg.linear.x = 0;
-        # twist_msg.angular.z = 0;
+        # twist_msg.linear.x = 0.0;
+        # twist_msg.angular.z = 0.0;
         ########################################
 
         self.twist_pub.publish(twist_msg)
@@ -39,9 +40,13 @@ class CustomRobotControllerNode(Node):
         self.create_subscription(
                 LaserScan,
                 self.scan_topic,
-                self.process_LaserScan)
+                self.process_LaserScan,
+                QoSProfile(depth=10, reliability=ReliabilityPolicy.BEST_EFFORT))
 
-        self.twist_pub = self.create_publisher(Twist, self.twist_topic)
+        self.twist_pub = self.create_publisher(
+                                Twist,
+                                self.twist_topic,
+                                QoSProfile(depth=10))
 
 
 

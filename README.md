@@ -105,3 +105,7 @@ ros2 launch flatland_quick_start_ros2 flatland_rviz.launch world_path:="maze"
 ```
 
 To learn more about the Flatland simulator, read the [documentation and tutorials](https://flatland-simulator.readthedocs.io/en/latest/)
+
+## Feedback
+
+Once you have finished following the tutorial, please fill out the following form: https://forms.gle/Pw1brvNvAmvSGhQr9

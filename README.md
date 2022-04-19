@@ -17,6 +17,11 @@ Note: From this point on, it is assumed that every terminal has sourced the _set
 source /opt/ros/foxy/setup.bash
 ```
 
+Some additional ROS2 tools will be required for this tutorial to function properly. You can install them with:
+```
+sudo apt install ros-foxy-rviz2 ros-foxy-navigation2 ros-foxy-nav2-bringup
+```
+
 ### Workspace Setup
 
 Create your own workspace. Pick where you would like your workspace to be placed (usually in the home directory, a.k.a. _~/_) and create a folder with a name of your choice, for example _ros\_workspace_, and within it create a folder named _src_. Finally, from within the workspace folder, in this case the ros_workspace folder, run the _colcon build_ command. You can use the following commands in a terminal for this process, assuming you place your workspace in your home directory:

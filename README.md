@@ -35,7 +35,7 @@ source install/setup.bash
 
 ### Flatland Setup
 
-First, clone the flatland repository into the _src_ folder of your workspace and check out the ros2-plugins-port-broken branch. Then, from within your workspace, build the package with _colcon build_ (and source install/setup.bash), and launch the default server to test whether everything is working. You can do this process with the following commands:
+First, clone the flatland repository into the _src_ folder of your workspace, check out the ros2-plugins-port-broken branch and install its dependencies (you may have to install LUA separately if you don't already have it). Then, from within your workspace, build the package with _colcon build_ (and source install/setup.bash), and launch the default server to test whether everything is working. You can do this process with the following commands:
 
 ```
 cd src/
@@ -43,6 +43,8 @@ git clone https://github.com/avidbots/flatland.git
 cd flatland
 git checkout origin/ros2-plugins-port-broken
 cd ../..
+sudo apt-get update
+sudo apt-get install liblua5.1-0-dev
 rosdep install --from-paths src --ignore-src
 colcon build
 source install/setup.bash

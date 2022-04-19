@@ -43,6 +43,7 @@ git clone https://github.com/avidbots/flatland.git
 cd flatland
 git checkout origin/ros2-plugins-port-broken
 cd ../..
+rosdep install --from-paths src --ignore-src
 colcon build
 source install/setup.bash
 ros2 launch flatland_server server.launch

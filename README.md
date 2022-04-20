@@ -53,10 +53,9 @@ sudo apt-get install liblua5.1-0-dev
 rosdep install --from-paths src --ignore-src
 colcon build
 source install/setup.bash
-ros2 launch flatland_server server.launch
 ```
 
-If all went well, you should see some feedback on the console. If you have already experimented with the ROS1 version, you'll notice that the visualization window is missing. As the ROS2 port of flatland isn't finished yet, this feature isn't available.
+If all went well, you should see some feedback on the console from the build process.
 
 ## First Run
 

@@ -6,7 +6,7 @@ Note: This guide assumes you are using an Ubuntu 20.04 operating system, and can
 
 ### ROS Installation
 
-Follow the instructions in the official [ROS installation guide](http://docs.ros.org/en/foxy/Installation/Alternatives/Ubuntu-Development-Setup.html). By following the guide, you will have ROS2 installed on your home directory, under the name _ros2\_linux_. However, in this tutorial it is assumed that your ROS installation is placed in _/opt/ros/_, under the name _foxy_(which is the most recent Long Term Support distribution at the time of writing). If you wish to move your installation to this location, you can do the following:
+Follow the instructions in the official [ROS installation guide](http://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html). By following the guide, you will have ROS2 installed on your home directory, under the name _ros2\_linux_. However, in this tutorial it is assumed that your ROS installation is placed in _/opt/ros/_, under the name _foxy_(which is the most recent Long Term Support distribution at the time of writing). If you wish to move your installation to this location, you can do the following:
 ```
 sudo mv ~/ros2_foxy/ros2-linux/ /opt/ros/
 sudo mv /opt/ros/ros2-linux/ /opt/ros/foxy/

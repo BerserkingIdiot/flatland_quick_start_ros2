@@ -114,7 +114,9 @@ ros2 run flatland_quick_start_ros2 custom_robot_controller
  
 ### Python
 
-Within the _scripts/_ folder of this package, you can find a file named _custom\_robot\_controller.py_. You can use this code to write your own code, and experiment with robot control. Unlike the C++ version, you don't have to build the package every time you modify the code, and to run it you must first make sure to have a simulation running. You can use one of the launch files from the previous section, for example, and then use the following command:
+Within the _scripts/_ folder of this package, you can find a file named _custom\_robot\_controller.py_. The path to this .py file is _/ros\_workspace/src/flatland\_quick\_start\_ros2/src/custom\_robot\_controller.py_.
+
+You can use this code to write your own code, and experiment with robot control. Unlike the C++ version, you don't have to build the package every time you modify the code, and to run it you must first make sure to have a simulation running. You can use one of the launch files from the previous section, for example, and then use the following command:
 ```
 ros2 run flatland_quick_start_ros2 custom_robot_controller.py
 ```

@@ -32,9 +32,16 @@ cd ~/ros_workspace/
 colcon build
 ```
 
-Three new folders should have appeared in your workspace, _build/_, _install/_ and _log/_. Within the _install/_ folder, you'll find multiple shell scripts. One of these, _install/setup.bash_ will be used to allow you to run code from packages within your workspace. Every time you open a new terminal to run ROS code from within your workspace and after you run _colcon build_, don't forget to execute the following command:
+Three new folders should have appeared in your workspace, _build/_, _install/_ and _log/_. Within the _install/_ folder, you'll find multiple shell scripts. One of these, _install/setup.bash_ will be used to allow you to run code from packages within your workspace. After you run _colcon build_, don't forget to execute the following command:
 
 ```
+source install/setup.bash
+```
+
+**Important Note**: Every time you open a new terminal to run ROS code from within your workspace, you must first source ROS's _setup.bash_ script and your workspace's own _setup.bash_. You can do this by running these commands:
+
+```
+source /opt/ros/foxy/setup.bash
 source install/setup.bash
 ```
 
@@ -80,11 +87,15 @@ This will launch a Flatland simulation, containing a small differential drive ro
 
 ![Screenshot from 2022-04-20 10-21-54](https://user-images.githubusercontent.com/38168315/164197521-1b16f6f1-7871-43c3-a3a0-69547c89ff2a.png)
 
+You can zoom in the visualization window with the scroll wheel and move it around by using alt + left click and dragging. The front of the robot starts pointed towards the right and the robot looks like this:
+
+![simplified_robot](https://user-images.githubusercontent.com/38168315/175785792-73b931b9-7859-42ff-8570-dd36f6a99a51.png)
+
 ## Write your own code
 
 The simulation in this package provides a small differential drive robot equipped with a LiDAR. The differential drive is controlled through Twist messages, and the LiDAR provides data in the form of LaserScan messages. In this package, you will find some sample code that you can use to help develop your own robot controller.
 
-Note: the LiDAR scan data is provided in the form of an array of ranges, each value corresponding to the nearest detected obstacle by that ray, or _nan_ if nothing is found. The rays are defined counter-clockwise, starting from the rear of the robot, meaning that in the first half of the array are the values for obstacles on the right and in the second half are values for obstacles on the right, with the middle of the array corresponding to the front of the robot. Playing around with the RViz visualization may help understanding how these work.
+Note: the LiDAR scan data is provided in the form of an array of ranges, each value corresponding to the nearest detected obstacle by that ray, or _nan_ if nothing is found. The rays are defined counter-clockwise, starting from the rear of the robot, meaning that in the first half of the array are the values for obstacles on the right and in the second half are values for obstacles on the left, with the middle of the array corresponding to the front of the robot. Playing around with the RViz visualization may help understanding how these work.
 
 ### C++
 

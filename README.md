@@ -44,11 +44,10 @@ Three new folders should have appeared in your workspace, _build/_, _install/_ a
 source install/setup.bash
 ```
 
-**Important Note**: Every time you open a new terminal to run ROS code from within your workspace, you must first source ROS's _setup.bash_ script and your workspace's own _setup.bash_. You can do this by running these commands:
-
+**Important Note**: Every time you open a new terminal to run ROS code from within your workspace, you must first source ROS's _setup.bash_ script and your workspace's own _setup.bash_. The command to source ROS's _setup.bash_ is already being automatically run, if you added it to _~/.bashrc_, as indicated in the _ROS Installation_ section. In order to avoid having to source the setup.bash of the workspace everytime a new terminal is opened, similarly to what was done for sourcing ROS's setup.bash, the source command can be added to the .bashrc file:
 ```
-source /opt/ros/foxy/setup.bash
-source install/setup.bash
+echo "source ~/ros_workspace/install/setup.bash" >> ~/.bashrc
+source ~/.bashrc
 ```
 
 ### Flatland Setup

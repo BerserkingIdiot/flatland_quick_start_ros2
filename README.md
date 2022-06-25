@@ -17,6 +17,12 @@ Note: From this point on, it is assumed that every terminal has sourced the _set
 source /opt/ros/foxy/setup.bash
 ```
 
+Instead of having to write this command everytime a new terminal is opened, the command can be written onto the .bashrc script, so that it is run automatically when opening a new terminal:
+```
+echo "source /opt/ros/foxy/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+```
+
 Some additional ROS2 tools will be required for this tutorial to function properly. You can install them with:
 ```
 sudo apt install ros-foxy-rviz2 ros-foxy-navigation2 ros-foxy-nav2-bringup

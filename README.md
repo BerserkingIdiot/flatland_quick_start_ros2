@@ -25,6 +25,9 @@ Some additional ROS2 tools and the colcon build system will be required for this
 ```
 sudo apt install ros-foxy-rviz2 ros-foxy-navigation2 ros-foxy-nav2-bringup
 sudo apt install python3-colcon-common-extensions
+sudo apt install python3-rosdep
+sudo rosdep init
+rosdep update
 ```
 
 ### Workspace Setup

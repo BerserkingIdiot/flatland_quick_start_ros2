@@ -6,11 +6,9 @@ Note: This guide assumes you are using an Ubuntu 20.04 operating system, and can
 
 ### ROS Installation
 
-Follow the instructions in the official [ROS installation guide](http://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html). By following the guide, you will have ROS2 installed on your home directory, under the name _ros2\_linux_. However, in this tutorial it is assumed that your ROS installation is placed in _/opt/ros/_, under the name _foxy_(which is the most recent Long Term Support distribution at the time of writing). If you wish to move your installation to this location, you can do the following:
-```
-sudo mv ~/ros2_foxy/ros2-linux/ /opt/ros/
-sudo mv /opt/ros/ros2-linux/ /opt/ros/foxy/
-```
+Follow the instructions in the official [ROS installation guide](http://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html). It is recommended to at least install the desktop version, as some tools that will be used here are already contained within.
+
+In this tutorial it is assumed that your ROS installation is placed in /opt/ros/, under the name foxy (which is the second most recent Long Term Support distribution at the time of writing).
 
 Note: From this point on, it is assumed that every terminal has sourced the _setup.bash_ script as indicated in the Environment Setup section of the installation guide. Without this, you will not be able to use ROS or any of its tools. If you moved the installation to _/opt/ros/foxy/_, the command to source it becomes:
 ```
@@ -120,16 +118,46 @@ Example 3: A robot that moves in circles, and turns around itself when it finds 
 
 Within the _src/_ folder of this package (not to be confused with the workspace's _src/_), you can find a file named _custom\_robot\_controller.cpp_. The path to this .cpp file is _/ros\_workspace/src/flatland\_quick\_start\_ros2/src/custom\_robot\_controller.cpp_.
 
-You can use this code to write your own code, and experiment with robot control. Don't forget to build the package after you modify the code, and to run it you must first make sure to have a simulation running. You can use one of the launch files from the previous section, for example, and then use the following command:
+You can use this code to write your own code, and experiment with robot control. Don't forget to build the package after you modify the code:
+```
+cd ~/ros_workspace/src/flatland_quick_start_ros2/src
+nano custom_robot_controller.cpp
+<edit your code>
+cd ~/ros_workspace/
+colcon build
+```
+To run the controller you must first make sure to have a simulation running. You can use one of the launch files from the previous section, for example, and then run the controller (with rosrun). For instance,the following commands can be used in two terminals:
+
+In the first terminal (to start the robot and simulator):
+```
+ros2 launch flatland_quick_start_ros2 flatland_rviz.launch.xml
+```
+
+In the second terminal (to launch the controller):
 ```
 ros2 run flatland_quick_start_ros2 custom_robot_controller
 ```
  
 ### Python
 
-Within the _scripts/_ folder of this package, you can find a file named _custom\_robot\_controller.py_. The path to this .py file is _/ros\_workspace/src/flatland\_quick\_start\_ros2/src/custom\_robot\_controller.py_.
+Within the _scripts/_ folder of this package, you can find a file named _custom\_robot\_controller.py_. The path to this .py file is _/ros\_workspace/src/flatland\_quick\_start\_ros2/scripts/custom\_robot\_controller.py_.
 
-You can use this code to write your own code, and experiment with robot control. Unlike the C++ version, you don't have to build the package every time you modify the code, and to run it you must first make sure to have a simulation running. You can use one of the launch files from the previous section, for example, and then use the following command:
+You can use this code to write your own code, and experiment with robot control. Don't forget to build the package after you modify the code:
+```
+cd ~/ros_workspace/src/flatland_quick_start_ros2/scripts
+nano custom_robot_controller.py
+<edit your code>
+cd ~/ros_workspace/
+colcon build
+``` 
+To run the controller you must first make sure to have a simulation running. You can use one of the launch files from the previous section, for example, and then run the controller (with rosrun). For instance,the following commands can be used in two terminals:
+
+In the first terminal (to start the robot and simulator):
+```
+ros2 launch flatland_quick_start_ros2 flatland_rviz.launch.xml
+```
+
+In the second terminal (to launch the controller):
 ```
 ros2 run flatland_quick_start_ros2 custom_robot_controller.py
 ```

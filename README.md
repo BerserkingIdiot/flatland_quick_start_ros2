@@ -102,6 +102,20 @@ The simulation in this package provides a small differential drive robot equippe
 
 Note: the LiDAR scan data is provided in the form of an array of ranges, each value corresponding to the nearest detected obstacle by that ray, or _nan_ if nothing is found. The rays are defined counter-clockwise, starting from the rear of the robot, meaning that in the first half of the array are the values for obstacles on the right and in the second half are values for obstacles on the left, with the middle of the array corresponding to the front of the robot. Playing around with the RViz visualization may help understanding how these work.
 
+Three examples are provided in comments on the C++ and Python controllers. The GIFS below provide an example in RViz of the robot moving using each controller example.
+
+Example 1: A robot that moves forward
+
+![robot_ex1](https://user-images.githubusercontent.com/21350014/175800451-3afa03c3-36e8-4724-9af9-b2203945e6dc.gif)
+
+Example 2: A robot that moves in a circle
+
+![robot_ex2](https://user-images.githubusercontent.com/21350014/175800477-c88e3275-31aa-45ba-9cb4-8b87ef6cbbed.gif)
+
+Example 3: A robot that moves in circles, and turns around itself when it finds an obstacle in front of it
+
+![robot_ex3](https://user-images.githubusercontent.com/21350014/175800485-cad50162-4098-4471-80f2-5101af6772f3.gif)
+
 ### C++
 
 Within the _src/_ folder of this package (not to be confused with the workspace's _src/_), you can find a file named _custom\_robot\_controller.cpp_. The path to this .cpp file is _/ros\_workspace/src/flatland\_quick\_start\_ros2/src/custom\_robot\_controller.cpp_.

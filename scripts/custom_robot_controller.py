@@ -5,6 +5,7 @@ from rclpy.node import Node
 from rclpy.qos import ReliabilityPolicy, QoSProfile
 from sensor_msgs.msg import LaserScan
 from geometry_msgs.msg import Twist
+import math
 
 class CustomRobotControllerNode(Node):
 

@@ -31,7 +31,6 @@ CustomRobotController::CustomRobotController():
 
 void CustomRobotController::processLaserScan(const sensor_msgs::msg::LaserScan::SharedPtr lidar_scan_msg)
 {
-
     geometry_msgs::msg::Twist twist_msg;
 
     /**
@@ -44,9 +43,37 @@ void CustomRobotController::processLaserScan(const sensor_msgs::msg::LaserScan::
         twist_msg.linear.x = 0;
         twist_msg.angular.z = 0;
      */
-
+    /**
+    // Example 1: A robot that moves forward
+    twist_msg.linear.x = 1; // A positive lenear velocity makes the robot move forward
+    twist_msg.angular.z = 0; // Zero angular velocitiy prevents the robot from turning/rotating
+    */
+    /**
+    // Example 2: A robot that moves in circles
+    twist_msg.linear.x = 1; // A positive lenear velocity makes the robot move forward
+    twist_msg.angular.z = -1; // A negative angular velocitiy makes the robot turn clockwise
+    */
+    /**
+    // Example 3: A robot that moves in circles, and turns around itself when it finds an obstacle in front of it.
+    // Find if the laser in front of the robot is detecting an obstacle too close to them
+    int num_lasers = lidar_scan_msg->ranges.size();
+    const float max_distance = 1.00; // maximum allowed distance for an obstacle in one of three sensor readings before the robot starts spining around itself
+    float middle_laser_range = lidar_scan_msg->ranges[num_lasers / 2];
+    if(!(middle_laser_range >= lidar_scan_msg->range_min && middle_laser_range <= lidar_scan_msg->range_max) // if the distance reading is invalid or...
+            || middle_laser_range < max_distance // ... the distance is below the maximum allowed distance
+    ) {
+        // ROTATE
+        twist_msg.linear.x = 0;
+        twist_msg.angular.z = -2;
+    }
+    else {
+        // MOVE FORWARD
+        twist_msg.linear.x = 2;
+        twist_msg.angular.z = -2;
+    }
+    */
+    
     twist_pub->publish(twist_msg);
-
 }
 
 int main(int argc, char** argv)

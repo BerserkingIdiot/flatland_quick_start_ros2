@@ -21,9 +21,10 @@ echo "source /opt/ros/foxy/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 ```
 
-Some additional ROS2 tools will be required for this tutorial to function properly. You can install them with:
+Some additional ROS2 tools and the colcon build system will be required for this tutorial to function properly. You can install them with:
 ```
 sudo apt install ros-foxy-rviz2 ros-foxy-navigation2 ros-foxy-nav2-bringup
+sudo apt install python3-colcon-common-extensions
 ```
 
 ### Workspace Setup

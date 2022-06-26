@@ -40,9 +40,9 @@ class CustomRobotControllerNode(Node):
         ########################################
         ## Example 3: A robot that moves in circles, and turns around itself when it finds an obstacle in front of it
         ## Find if the laser in front of the robot is detecting an obstacle too close to them
-        #num_lasers = lidar_scan_msg.ranges.size()
+        #num_lasers = len(lidar_scan_msg.ranges)
         #max_distance = 1.00 # maximum allowed distance for an obstacle in one of three sensor readings before the robot starts spining around itself
-        #middle_laser_range = lidar_scan_msg.ranges[num_lasers / 2]
+        #middle_laser_range = lidar_scan_msg.ranges[math.floor(num_lasers / 2 + 0.5)]
         #if( not (middle_laser_range >= lidar_scan_msg.range_min and middle_laser_range <= lidar_scan_msg.range_max) # if the distance reading is invalid or...
         #        or middle_laser_range < max_distance): # ... the distance is below the maximum allowed distance
         #   # ROTATE

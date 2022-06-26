@@ -50,8 +50,8 @@ class CustomRobotControllerNode(Node):
         #    twist_msg.angular.z = -2
         #else:
         #   # MOVE FORWARD
-        #    twist_msg.linear.x = 2;
-        #    twist_msg.angular.z = -2;
+        #    twist_msg.linear.x = 2
+        #    twist_msg.angular.z = -2
         ########################################
 
         self.twist_pub.publish(twist_msg)

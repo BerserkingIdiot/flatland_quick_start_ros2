@@ -49,12 +49,12 @@ void CustomRobotController::processLaserScan(const sensor_msgs::msg::LaserScan::
     twist_msg.angular.z = 0; // Zero angular velocitiy prevents the robot from turning/rotating
     */
     /**
-    // Example 2: A robot that moves in circles
+    // Example 2: A robot that moves in a circle
     twist_msg.linear.x = 1; // A positive lenear velocity makes the robot move forward
     twist_msg.angular.z = -1; // A negative angular velocitiy makes the robot turn clockwise
     */
     /**
-    // Example 3: A robot that moves in circles, and turns around itself when it finds an obstacle in front of it.
+    // Example 3: A robot that moves in circles, and turns around itself when it finds an obstacle in front of it
     // Find if the laser in front of the robot is detecting an obstacle too close to them
     int num_lasers = lidar_scan_msg->ranges.size();
     const float max_distance = 1.00; // maximum allowed distance for an obstacle in one of three sensor readings before the robot starts spining around itself
